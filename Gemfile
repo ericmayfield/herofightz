@@ -11,7 +11,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'dotenv'
-gem 'pg'
+gem 'pg', '0.20'
 
 group :test do
   gem 'rspec'
