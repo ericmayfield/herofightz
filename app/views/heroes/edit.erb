@@ -1,0 +1,34 @@
+<h1>Update <%=@hero.name%></h1>
+<form method="POST" action="/heroes">
+    <input type="hidden" name="user_id" value="<%=session[:user_id]%>">
+    <input type="hidden" name="id" value="<%=@hero.id%>">
+    <p>Update any info for your hero you wish!</p>
+    <section class="row" style="margin-bottom:15px;">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="img_path" value="<%=@hero.img_path%>" checked>
+        <div class="col-xs">
+            <img width="200" src="/images/archer.jpg">
+            <br><center><input type="radio" name="img_path" value="archer.jpg"></center>
+        </div>
+        <div class="col-xs">
+            <img width="200" src="/images/paladin.jpg">
+            <br><center><input type="radio" name="img_path" value="paladin.jpg"></center>
+        </div>
+        <div class="col-xs">
+            <img width="200" src="/images/priest.jpg">
+            <br><center><input type="radio" name="img_path" value="priest.jpg"></center>
+        </div>
+        <div class="col-xs">
+            <img width="200" src="/images/warrior.jpg">
+            <br><center><input type="radio" name="img_path" value="warrior.jpg"></center>
+        </div>
+        <div class="col-xs">
+            <img width="200" src="/images/wizard.jpg">
+            <br><center><input type="radio" name="img_path" value="wizard.jpg"></center>
+        </div>
+    </section>
+    <p><label class="label">Name:</label> <input type="text" name="name" value="<%=@hero.name%>"></p>
+    <p><label class="label">Battlecry:</label> <input type="text" name="battle_cry" value="<%=@hero.battle_cry%>"></p>
+    <p><label class="label">Bio:</label> <textarea name="bio"><%=@hero.bio%></textarea></p>
+    <p><input class="btn btn-info" type="submit" value="Update Hero"></p>
+</form>

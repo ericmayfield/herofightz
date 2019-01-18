@@ -1,0 +1,11 @@
+<% @users.each do |user| %>
+    <p><%=user.name%></p>
+    <p><%=user.email%></p>
+    <p><%=user.id%></p>
+    <form method="POST" action="/account/delete">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="user_id" value="<%=user.id%>">
+        <input type="submit" value="Delete">
+    </form>
+    <br>
+<% end %>

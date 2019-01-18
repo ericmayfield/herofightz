@@ -1,0 +1,11 @@
+<header class="jumbotron my-4 center">
+    <h2 class="display-3">Login</h2>
+    <% if @message %>
+        <h5 class="display-6"><%= @message %></h3>
+    <% end %>
+    <form method="POST" action="/login">
+        <p><label class="label">Email:</label> <input type="text" name="email"></p>
+        <p><label class="label">Password:</label> <input type="password" name="password"></p>
+        <p><input class="button" type="submit" value="Login"></p>
+    </form>
+</header>

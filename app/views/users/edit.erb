@@ -1,0 +1,9 @@
+<header class="jumbotron my-4 center">
+    <h2 class="display-4">Edit Account</h2>
+    <form method="POST" action="/account">
+        <p><label class="label">Name:</label> <input type="text" name="name" value="<%=@user.name%>"></p>
+        <p><label class="label">Email:</label> <input type="text" name="email" value="<%=@user.email%>"></p>
+        <p><label class="label">Password:</label> <input type="password" name="password"></p>
+        <p><input type="hidden" name="_method" value="patch"><input class="button" type="submit" value="Update Account"></p>
+    </form>
+</header>

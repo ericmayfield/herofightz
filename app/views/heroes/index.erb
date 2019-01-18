@@ -1,0 +1,29 @@
+<h2>My Heroes</h2>
+<hr>
+
+<%  if @count < 1 || @count == nil %>
+        <p>You currently have no heroes. <a href="/heroes/new">Click here</a> to create a hero!</p>
+<%  else
+        @heroes.each do |hero| %>
+            <section class="row" style="margin-bottom: 15px; height:250px;">
+                <div class="col-sm-3">
+                    <p>Hero Name: <strong><%= hero.name %></strong></p>
+                    <p>Hero Battle Cry: <%= hero.battle_cry %></p>
+                    <p>Hero Bio: <%= hero.bio %></p>
+                    <p>
+                        <form method="post" action="/heroes/delete">
+                            <input type="hidden" name="hero_id" value="<%=hero.id%>"> 
+                            <input type="hidden" name="_method" value="delete"> 
+                            <a href="/heroes/<%=hero.id%>/edit" class="btn btn-info">Edit</a>
+                            <a href="/heroes/<%=hero.id%>/show" class="btn btn-info">View</a>
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                        </form>
+                    </p>
+                </div>
+                <div class="col-sm">
+                    <img width="300" src="/images/<%=hero.img_path%>">
+                </div>
+            </section
+            <hr>
+        <% end 
+    end %>

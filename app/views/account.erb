@@ -1,0 +1,14 @@
+<p>Welcome, <%=@user.name%></p>
+<br>
+<br>
+<% if @hero_count < 1 || @hero_count == nil %>
+    <p>You currently have 0 heroes. Let's fix that! Click 'Create a Hero' to get started.</p>
+<% else %>
+    <p>You currently have <%=@hero_count%> hero(s).</p>
+<% end %>
+<section>
+    <a class="btn btn-info" href="/heroes/new">Create a Hero</a>
+    <a class="btn btn-info" href="/account/edit">Edit Account</a>
+</section>
+<br>
+    
