@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     patch "/account" do
         if session[:user_id]
-            @user = User.find_by(session[:user_id])
+            @user = User.find(session[:user_id])
             @user.name = params[:name] if !params[:name].empty?
             @user.email = params[:email] if !params[:email].empty?
             @user.password = params[:password] if !params[:password].empty?
@@ -54,9 +54,19 @@ class UsersController < ApplicationController
     end
 
     delete "/account/delete" do
-        user = User.find(params[:user_id])
-        user.destroy
-        redirect '/users'
+        admin_check = User.find_by(email: "eric@visiblycreative.com")
+        user_check = User.find(session[:user_id])
+        
+        if admin_check == user_check
+            user = User.find(params[:user_id])
+            user.destroy
+            redirect '/users'
+        else
+            user = User.find(params[:user_id])
+            user.destroy
+            session.clear
+            redirect '/'
+        end
     end
 
     get "/users" do

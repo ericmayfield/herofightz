@@ -9,6 +9,11 @@
 <section>
     <a class="btn btn-info" href="/heroes/new">Create a Hero</a>
     <a class="btn btn-info" href="/account/edit">Edit Account</a>
+    <form style="display: inline-block;" method="POST" action="/account/delete">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="user_id" value="<%=@user.id%>">
+        <input type="submit" class="btn btn-danger" value="Delete Account">
+    </form>
 </section>
 <br>
     

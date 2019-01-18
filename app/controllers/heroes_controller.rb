@@ -19,12 +19,16 @@ class HeroesController < ApplicationController
     end
 
     get '/heroes/:id/edit' do
-        if session[:user_id]
-            @hero = Hero.find_by(id: params[:id])
+        @hero = Hero.find_by(id: params[:id])
+
+        if session[:user_id] == @hero.user_id
             erb :"/heroes/edit"
-        else
+        elsif !session[:user_id]
             session[:message] = "You must login to perform this action."
-            redirect "/login"
+            redirect '/login'
+        else
+            session[:message] = "The hero you are attempting to edit does not belong to you."
+            redirect "/account"
         end
     end
     
